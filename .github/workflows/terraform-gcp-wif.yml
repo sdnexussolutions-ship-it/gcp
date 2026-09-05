@@ -19,11 +19,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Google Cloud Auth (WIF)
+        id: auth
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: "projects/751605005789/locations/global/workloadIdentityPools/github-pool2/providers/github-provider2"
           service_account: "terraform-admin@project-c1c05bf8-90d9-4f7f-a17.iam.gserviceaccount.com"
           audience: "https://iam.googleapis.com/"
+          create_credentials_file: true
+
+      - name: Export WIF credentials for Terraform
+        run: |
+          echo "GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }}" >> $GITHUB_ENV
 
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v2
