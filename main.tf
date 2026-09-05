@@ -10,9 +10,9 @@ terraform {
 }
 
 provider "google" {
-  project     = "project-c1c05bf8-90d9-4f7f-a17"
-  region      = "us-central1"
-  credentials = file(var.credentials_file)
+  project      = "project-c1c05bf8-90d9-4f7f-a17"
+  region       = "us-central1"
+  access_token = var.access_token
 }
 
 resource "google_storage_bucket" "example" {
