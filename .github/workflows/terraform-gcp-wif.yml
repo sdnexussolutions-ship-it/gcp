@@ -27,9 +27,9 @@ jobs:
           audience: "https://iam.googleapis.com/"
           create_credentials_file: true
 
-      - name: Export WIF credentials for Terraform
+      - name: Export WIF access token for Terraform
         run: |
-          echo "TF_VAR_credentials_file=${{ steps.auth.outputs.credentials_file_path }}" >> $GITHUB_ENV
+          echo "TF_VAR_access_token=${{ steps.auth.outputs.access_token }}" >> $GITHUB_ENV
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
