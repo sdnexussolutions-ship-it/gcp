@@ -30,9 +30,7 @@ jobs:
       - name: Export WIF credentials for Terraform
         run: |
           echo "GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }}" >> $GITHUB_ENV
-
-      - name: Setup gcloud
-        uses: google-github-actions/setup-gcloud@v2
+          echo "GOOGLE_OAUTH_ACCESS_TOKEN=${{ steps.auth.outputs.access_token }}" >> $GITHUB_ENV
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
