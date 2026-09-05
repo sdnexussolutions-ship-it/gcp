@@ -17,4 +17,7 @@ provider "google" {
 resource "google_storage_bucket" "example" {
   name     = "sdnexussolutions-ship-it-example-bucket"
   location = "US"
+  project  = "project-c1c05bf8-90d9-4f7f-a17"
+
+  uniform_bucket_level_access = true
 }
